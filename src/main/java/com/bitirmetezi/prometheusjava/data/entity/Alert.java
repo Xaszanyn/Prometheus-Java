@@ -50,7 +50,7 @@ public class Alert implements Serializable {
     private Integer timeInterval;
     @Column(name = "time_value")
     @NonNull
-    private char timeValue;
+    private Character timeValue;
     @Column(name = "start_active_time")
     @NonNull
     private BigDecimal startActiveTime;
