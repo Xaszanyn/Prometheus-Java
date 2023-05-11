@@ -13,4 +13,4 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/
-/src/main/resources/application.properties
+src/main/resources/application.properties
