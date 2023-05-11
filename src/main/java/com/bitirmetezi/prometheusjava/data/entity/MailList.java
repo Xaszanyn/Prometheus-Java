@@ -1,9 +1,6 @@
 package com.bitirmetezi.prometheusjava.data.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -32,4 +29,5 @@ public class MailList implements Serializable {
     private Long insertUserId;
     @Column(name = "last_update_user_id")
     private Long lastUpdateUserId;
+
 }
