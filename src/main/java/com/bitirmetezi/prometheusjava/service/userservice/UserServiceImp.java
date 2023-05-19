@@ -1,6 +1,6 @@
 package com.bitirmetezi.prometheusjava.service.userservice;
 
-import com.bitirmetezi.prometheusjava.core.mappers.UserMapper;
+import com.bitirmetezi.prometheusjava.core.mappers.UserMapperImpl;
 import com.bitirmetezi.prometheusjava.data.entity.User;
 import com.bitirmetezi.prometheusjava.data.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -18,29 +18,28 @@ import static com.bitirmetezi.prometheusjava.core.mappers.LogConstants.*;
 public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository, UserMapper userMapper){
+    public UserServiceImp(UserRepository userRepository){
         this.userRepository = userRepository;
-        this.userMapper = userMapper;
     }
 
 
     @Override
     public List<UserServiceOutput> findAll() {
-        return userMapper.map(userRepository.findAll());
+        return UserMapperImpl.map(userRepository.findAll());
     }
 
     @Override
     public UserServiceOutput findById(Long id) {
-        return userMapper.map(userRepository.findById(id));
+        return UserMapperImpl.map(userRepository.findById(id));
     }
 
     @Override
     public String save(UserCreateServiceInput serviceInput) {
         if (serviceInput != null){
-            userRepository.save(userMapper.map(serviceInput));
+            userRepository.save(UserMapperImpl.map(serviceInput));
             return SUCCESS.getName();
         }
         log.error(USER_REPOSITORY_ACCESS_ERROR.getName());
