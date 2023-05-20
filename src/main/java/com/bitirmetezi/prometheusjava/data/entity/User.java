@@ -6,23 +6,24 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "organisation")
+    @Column(name = "ORGANISATION")
     private String organisation;
-    @Column(name = "is_admin")
+    @Column(name = "IS_ADMIN")
     private Boolean isAdmin;
 }
