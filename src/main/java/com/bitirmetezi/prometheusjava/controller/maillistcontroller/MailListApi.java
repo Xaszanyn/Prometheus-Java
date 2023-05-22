@@ -1,9 +1,8 @@
-package com.bitirmetezi.prometheusjava.controller.usercontroller;
+package com.bitirmetezi.prometheusjava.controller.maillistcontroller;
 
 import com.bitirmetezi.prometheusjava.controller.BaseResponse;
-import com.bitirmetezi.prometheusjava.core.mappers.UserMapper;
-import com.bitirmetezi.prometheusjava.service.userservice.UserService;
-import com.bitirmetezi.prometheusjava.service.userservice.UserServiceOutput;
+import com.bitirmetezi.prometheusjava.service.maillistservice.MailListService;
+import com.bitirmetezi.prometheusjava.service.maillistservice.MailListServiceOutput;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,38 +11,38 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.bitirmetezi.prometheusjava.core.mappers.MailListMapper.*;
+
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/users")
-public class UserApi {
+@RequestMapping("/api/mailLists")
+public class MailListApi {
 
     @Autowired
-    UserService userService;
+    MailListService mailListService;
 
     @GetMapping
-    public BaseResponse<List<UserServiceOutput>> getAll(){
-        List<UserServiceOutput> serviceOutputs = userService.findAll();
+    public BaseResponse<List<MailListServiceOutput>> getAll(){
+        List<MailListServiceOutput> serviceOutputs = mailListService.findAll();
 
-        BaseResponse<List<UserServiceOutput>> response = new BaseResponse<>();
+        BaseResponse<List<MailListServiceOutput>> response = new BaseResponse<>();
         fillResponse(serviceOutputs, response);
         return response;
     }
 
-
-
     @GetMapping("/{id}")
-    public BaseResponse<UserServiceOutput> getById(@PathVariable("id") Long id){
-        UserServiceOutput serviceOutput = userService.findById(id);
+    public BaseResponse<MailListServiceOutput> getById(@PathVariable("id") Long id){
+        MailListServiceOutput serviceOutput = mailListService.findById(id);
 
-        BaseResponse<UserServiceOutput> response = new BaseResponse<>();
+        BaseResponse<MailListServiceOutput> response = new BaseResponse<>();
         fillResponse(serviceOutput, response);
         return response;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public BaseResponse<String> createUser(@RequestBody UserCreateRequest request){
-        String result = userService.createUser(UserMapper.map(request));
+    public BaseResponse<String> createMailList(@RequestBody MailListCreateRequest request){
+        String result = mailListService.createMailList(map(request));
 
         BaseResponse<String> response = new BaseResponse<>();
         fillResponse(result, response);
@@ -51,8 +50,8 @@ public class UserApi {
     }
 
     @PostMapping("/update")
-    public BaseResponse<String> updateUser(@RequestBody UserUpdateRequest request){
-        String result = userService.updateUser(UserMapper.map(request));
+    public BaseResponse<String> updateMailList(@RequestBody MailListUpdateRequest request){
+        String result = mailListService.updateMailList(map(request));
 
         BaseResponse<String> response = new BaseResponse<>();
         fillResponse(result, response);
@@ -60,16 +59,15 @@ public class UserApi {
     }
 
     @PostMapping("/delete/{id}")
-    public BaseResponse<String> deleteUser(@PathVariable("id") Long id){
-        String result = userService.deleteUser(id);
+    public BaseResponse<String> deleteMailList(@PathVariable("id") Long id){
+        String result = mailListService.deleteMailList(id);
 
         BaseResponse<String> response = new BaseResponse<>();
         fillResponse(result, response);
         return response;
     }
 
-
-    private static void fillResponse(UserServiceOutput serviceOutput, BaseResponse<UserServiceOutput> response) {
+    private static void fillResponse(MailListServiceOutput serviceOutput, BaseResponse<MailListServiceOutput> response) {
         if(serviceOutput != null){
             response.setResponseCode(1);
             response.setResponseDesc("successfully completed");
@@ -81,7 +79,7 @@ public class UserApi {
         }
     }
 
-    private static void fillResponse(List<UserServiceOutput> serviceOutputs, BaseResponse<List<UserServiceOutput>> response) {
+    private static void fillResponse(List<MailListServiceOutput> serviceOutputs, BaseResponse<List<MailListServiceOutput>> response) {
         if (!serviceOutputs.isEmpty()){
             response.setResponseCode(1);
             response.setResponseDesc("successfully completed");

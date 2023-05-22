@@ -1,5 +1,7 @@
-package com.bitirmetezi.prometheusjava.mappers;
+package com.bitirmetezi.prometheusjava.core.mappers;
 
+import com.bitirmetezi.prometheusjava.controller.usercontroller.UserCreateRequest;
+import com.bitirmetezi.prometheusjava.controller.usercontroller.UserUpdateRequest;
 import com.bitirmetezi.prometheusjava.data.entity.User;
 import com.bitirmetezi.prometheusjava.service.userservice.UserCreateServiceInput;
 import com.bitirmetezi.prometheusjava.service.userservice.UserServiceOutput;
@@ -58,6 +60,27 @@ public class UserMapper {
                 .password(serviceInput.getPassword())
                 .organisation(serviceInput.getOrganisation())
                 .isAdmin(serviceInput.getIsAdmin())
+                .build();
+    }
+
+    public static UserCreateServiceInput map(UserCreateRequest request){
+        return UserCreateServiceInput.builder()
+                .name(request.getName())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .organisation(request.getOrganisation())
+                .isAdmin(request.getIsAdmin())
+                .build();
+    }
+
+    public static UserUpdateServiceInput map(UserUpdateRequest request){
+        return UserUpdateServiceInput.builder()
+                .id(request.getId())
+                .name(request.getName())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .organisation(request.getOrganisation())
+                .isAdmin(request.getIsAdmin())
                 .build();
     }
 }

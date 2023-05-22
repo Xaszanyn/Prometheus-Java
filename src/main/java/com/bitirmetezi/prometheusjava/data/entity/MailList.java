@@ -4,30 +4,30 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
-@Table(name = "mail_list")
+@Table(name = "MAIL_LIST")
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
+@AllArgsConstructor
+@Builder
 public class MailList implements Serializable {
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "NAME")
     @NonNull
     private String name;
-    @Column(name = "insert_time")
+    @Column(name = "INSERT_TIME")
     @NonNull
-    private BigDecimal insertTime;
-    @Column(name = "update_time")
+    private Long insertTime;
+    @Column(name = "UPDATE_TIME")
     @NonNull
-    private BigDecimal updateTime;
-    @Column(name = "insert_user_id")
+    private Long updateTime;
+    @Column(name = "INSERT_USER_ID")
     @NonNull
     private Long insertUserId;
-    @Column(name = "last_update_user_id")
+    @Column(name = "LAST_UPDATE_USER_ID")
     private Long lastUpdateUserId;
 
 }

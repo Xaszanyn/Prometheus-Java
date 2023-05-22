@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.bitirmetezi.prometheusjava.mappers.UserMapper.*;
+import static com.bitirmetezi.prometheusjava.core.mappers.UserMapper.*;
 
 @Service
 @RequiredArgsConstructor
