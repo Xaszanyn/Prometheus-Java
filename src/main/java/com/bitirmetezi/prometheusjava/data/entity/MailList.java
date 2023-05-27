@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class MailList implements Serializable {
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "NAME")
     @NonNull

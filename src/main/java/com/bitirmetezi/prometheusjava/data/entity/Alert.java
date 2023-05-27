@@ -4,59 +4,59 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "alert")
+@Table(name = "ALERT")
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
+@AllArgsConstructor
+@Builder
 public class Alert implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "NAME")
     @NonNull
     private String name;
-    @Column(name = "query")
+    @Column(name = "QUERY")
     @NonNull
     private String query;
-    @Column(name = "insert_user_id")
+    @Column(name = "INSERT_USER_ID")
     @NonNull
     private Long insertUserId;
-    @Column(name = "insert_time")
+    @Column(name = "INSERT_TIME")
     @NonNull
-    private BigDecimal insertTime;
-    @Column(name = "update_time")
+    private Long insertTime;
+    @Column(name = "UPDATE_TIME")
     @NonNull
-    private BigDecimal updateTime;
-    @Column(name = "is_active")
+    private Long updateTime;
+    @Column(name = "IS_ACTIVE")
     @NonNull
     private Boolean isActive;
-    @Column(name = "severity")
+    @Column(name = "SEVERITY")
     @NonNull
     private String severity;
-    @Column(name = "threshold_sign")
+    @Column(name = "THRESHOLD_SIGN")
     @NonNull
     private String thresholdSign;
-    @Column(name = "threshold_value")
+    @Column(name = "THRESHOLD_VALUE")
     @NonNull
     private Integer thresholdValue;
-    @Column(name = "time_interval")
+    @Column(name = "TIME_INTERVAL")
     @NonNull
     private Integer timeInterval;
-    @Column(name = "time_value")
+    @Column(name = "TIME_VALUE")
     @NonNull
     private Character timeValue;
-    @Column(name = "start_active_time")
+    @Column(name = "START_ACTIVE_TIME")
     @NonNull
-    private BigDecimal startActiveTime;
-    @Column(name = "end_active_time")
+    private Long startActiveTime;
+    @Column(name = "END_ACTIVE_TIME")
     @NonNull
-    private BigDecimal endActiveTime;
+    private Long endActiveTime;
 
     @OneToMany(mappedBy = "alert")
     private List<AlertHistory> alertHistories;

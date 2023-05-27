@@ -1,74 +1,76 @@
-package com.bitirmetezi.prometheusjava.controller.usercontroller;
+package com.bitirmetezi.prometheusjava.controller.alertcontroller;
 
 import com.bitirmetezi.prometheusjava.controller.BaseResponse;
-import com.bitirmetezi.prometheusjava.core.mappers.UserMapper;
-import com.bitirmetezi.prometheusjava.service.userservice.UserService;
-import com.bitirmetezi.prometheusjava.service.userservice.UserServiceOutput;
+import com.bitirmetezi.prometheusjava.service.alertservice.AlertService;
+import com.bitirmetezi.prometheusjava.service.alertservice.AlertServiceOutput;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.bitirmetezi.prometheusjava.core.mappers.AlertMapper.*;
+
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/users")
-public class UserApi {
+@RequestMapping("/alerts")
+public class AlertApi {
 
     @Autowired
-    UserService userService;
+    private final AlertService alertService;
 
     @GetMapping
-    public BaseResponse<List<UserServiceOutput>> getAll(){
-        List<UserServiceOutput> serviceOutputs = userService.findAll();
+    public BaseResponse<List<AlertServiceOutput>> getAll(){
+        List<AlertServiceOutput> outputList = alertService.findAll();
 
-        BaseResponse<List<UserServiceOutput>> response = new BaseResponse<>();
-        fillResponse(serviceOutputs, response);
+        BaseResponse<List<AlertServiceOutput>> response = new BaseResponse<>();
+
+        fillResponse(outputList, response);
         return response;
     }
 
-
-
     @GetMapping("/{id}")
-    public BaseResponse<UserServiceOutput> getById(@PathVariable("id") Long id){
-        UserServiceOutput serviceOutput = userService.findById(id);
+    public BaseResponse<AlertServiceOutput> getById(@PathVariable("id") Long id){
+        AlertServiceOutput serviceOutput = alertService.findById(id);
 
-        BaseResponse<UserServiceOutput> response = new BaseResponse<>();
+        BaseResponse<AlertServiceOutput> response = new BaseResponse<>();
+
         fillResponse(serviceOutput, response);
         return response;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public BaseResponse<String> createUser(@RequestBody UserCreateRequest request){
-        String result = userService.createUser(UserMapper.map(request));
+    public BaseResponse<String> createAlert(@RequestBody AlertCreateRequest request){
+        String output = alertService.saveAlert(map(request));
 
         BaseResponse<String> response = new BaseResponse<>();
-        fillResponse(result, response);
+        fillResponse(output, response);
         return response;
     }
 
-    @PostMapping("/update")
-    public BaseResponse<String> updateUser(@RequestBody UserUpdateRequest request){
-        String result = userService.updateUser(UserMapper.map(request));
+    @PutMapping("/update")
+    public BaseResponse<String> updateAlert(@RequestBody AlertUpdateRequest request){
+        String output = alertService.updateAlert(map(request));
 
         BaseResponse<String> response = new BaseResponse<>();
-        fillResponse(result, response);
+        fillResponse(output, response);
         return response;
     }
 
-    @PostMapping("/delete/{id}")
-    public BaseResponse<String> deleteUser(@PathVariable("id") Long id){
-        String result = userService.deleteUser(id);
+    @DeleteMapping("/delete/{id}")
+    public BaseResponse<String> deleteAlert(@PathVariable("id") Long id){
+        String output = alertService.deleteAlert(id);
 
         BaseResponse<String> response = new BaseResponse<>();
-        fillResponse(result, response);
+        fillResponse(output, response);
         return response;
     }
 
 
-    private static void fillResponse(UserServiceOutput serviceOutput, BaseResponse<UserServiceOutput> response) {
+    private static void fillResponse(AlertServiceOutput serviceOutput, BaseResponse<AlertServiceOutput> response) {
         if(serviceOutput != null){
             response.setResponseCode(1);
             response.setResponseDesc("successfully completed");
@@ -80,7 +82,7 @@ public class UserApi {
         }
     }
 
-    private static void fillResponse(List<UserServiceOutput> serviceOutputs, BaseResponse<List<UserServiceOutput>> response) {
+    private static void fillResponse(List<AlertServiceOutput> serviceOutputs, BaseResponse<List<AlertServiceOutput>> response) {
         if (!serviceOutputs.isEmpty()){
             response.setResponseCode(1);
             response.setResponseDesc("successfully completed");

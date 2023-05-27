@@ -3,7 +3,6 @@ package com.bitirmetezi.prometheusjava.controller.maillistcontroller;
 import com.bitirmetezi.prometheusjava.controller.BaseResponse;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListService;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListServiceOutput;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
