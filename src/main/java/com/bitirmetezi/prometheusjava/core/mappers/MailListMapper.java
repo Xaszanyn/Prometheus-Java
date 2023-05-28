@@ -7,6 +7,8 @@ import com.bitirmetezi.prometheusjava.service.maillistservice.MailListCreateServ
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListServiceOutput;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListUpdateServiceInput;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +21,8 @@ public class MailListMapper {
             MailListServiceOutput serviceOutput = MailListServiceOutput.builder()
                     .id(mailList.getId())
                     .name(mailList.getName())
-                    .insertTime(mailList.getInsertTime())
-                    .updateTime(mailList.getUpdateTime())
+                    .insertTime(DateTimeMapper.map(mailList.getInsertTime()))
+                    .updateTime(DateTimeMapper.map(mailList.getUpdateTime()))
                     .insertUserId(mailList.getInsertUserId())
                     .lastUpdateUserId(mailList.getLastUpdateUserId())
                     .build();
@@ -35,8 +37,8 @@ public class MailListMapper {
             return MailListServiceOutput.builder()
                     .id(mailList.getId())
                     .name(mailList.getName())
-                    .insertTime(mailList.getInsertTime())
-                    .updateTime(mailList.getUpdateTime())
+                    .insertTime(DateTimeMapper.map(mailList.getInsertTime()))
+                    .updateTime(DateTimeMapper.map(mailList.getUpdateTime()))
                     .insertUserId(mailList.getInsertUserId())
                     .lastUpdateUserId(mailList.getLastUpdateUserId())
                     .build();
@@ -68,8 +70,8 @@ public class MailListMapper {
     public static MailListCreateServiceInput map(MailListCreateRequest request){
         return MailListCreateServiceInput.builder()
                 .name(request.getName())
-                .insertTime(request.getInsertTime())
-                .updateTime(request.getUpdateTime())
+                .insertTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
+                .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
                 .insertUserId(request.getInsertUserId())
                 .lastUpdateUserId(request.getLastUpdateUserId())
                 .build();
@@ -79,8 +81,7 @@ public class MailListMapper {
         return MailListUpdateServiceInput.builder()
                 .id(request.getId())
                 .name(request.getName())
-                .insertTime(request.getInsertTime())
-                .updateTime(request.getUpdateTime())
+                .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
                 .insertUserId(request.getInsertUserId())
                 .lastUpdateUserId(request.getLastUpdateUserId())
                 .build();

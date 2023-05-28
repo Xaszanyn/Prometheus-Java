@@ -8,8 +8,6 @@ import lombok.Getter;
 public class MailListUpdateRequest {
     private Long id;
     private String name;
-    private Long insertTime;
-    private Long updateTime;
     private Long insertUserId;
     private Long lastUpdateUserId;
 }

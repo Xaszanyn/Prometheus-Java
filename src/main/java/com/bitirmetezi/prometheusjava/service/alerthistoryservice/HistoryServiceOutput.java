@@ -12,5 +12,5 @@ public class HistoryServiceOutput {
     private String thresholdSign;
     private Integer thresholdValue;
     private Double alertValue;
-    private Long alertTime;
+    private String alertTime;
 }

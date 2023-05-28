@@ -9,8 +9,8 @@ import lombok.Getter;
 public class MailListServiceOutput {
     private Long id;
     private String name;
-    private Long insertTime;
-    private Long updateTime;
+    private String insertTime;
+    private String updateTime;
     private Long insertUserId;
     private Long lastUpdateUserId;
 }

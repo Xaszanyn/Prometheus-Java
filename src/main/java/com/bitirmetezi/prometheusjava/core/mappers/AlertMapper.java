@@ -7,9 +7,12 @@ import com.bitirmetezi.prometheusjava.service.alertservice.AlertCreateServiceInp
 import com.bitirmetezi.prometheusjava.service.alertservice.AlertServiceOutput;
 import com.bitirmetezi.prometheusjava.service.alertservice.AlertUpdateServiceInput;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 public class AlertMapper {
     public static List<AlertServiceOutput> map(List<Alert> alerts){
@@ -20,8 +23,8 @@ public class AlertMapper {
                     .name(alert.getName())
                     .query(alert.getQuery())
                     .insertUserId(alert.getInsertUserId())
-                    .insertTime(alert.getInsertTime())
-                    .updateTime(alert.getUpdateTime())
+                    .insertTime(DateTimeMapper.map(alert.getInsertTime()))
+                    .updateTime(DateTimeMapper.map(alert.getUpdateTime()))
                     .isActive(alert.getIsActive())
                     .severity(alert.getSeverity())
                     .thresholdSign(alert.getThresholdSign())
@@ -44,8 +47,8 @@ public class AlertMapper {
                     .name(alert.getName())
                     .query(alert.getQuery())
                     .insertUserId(alert.getInsertUserId())
-                    .insertTime(alert.getInsertTime())
-                    .updateTime(alert.getUpdateTime())
+                    .insertTime(DateTimeMapper.map(alert.getInsertTime()))
+                    .updateTime(DateTimeMapper.map(alert.getUpdateTime()))
                     .isActive(alert.getIsActive())
                     .severity(alert.getSeverity())
                     .thresholdSign(alert.getThresholdSign())
@@ -101,8 +104,8 @@ public class AlertMapper {
                 .name(request.getName())
                 .query(request.getQuery())
                 .insertUserId(request.getInsertUserId())
-                .insertTime(request.getInsertTime())
-                .updateTime(request.getUpdateTime())
+                .insertTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
+                .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
                 .isActive(request.getIsActive())
                 .severity(request.getSeverity())
                 .thresholdSign(request.getThresholdSign())
@@ -120,8 +123,7 @@ public class AlertMapper {
                 .name(request.getName())
                 .query(request.getQuery())
                 .insertUserId(request.getInsertUserId())
-                .insertTime(request.getInsertTime())
-                .updateTime(request.getUpdateTime())
+                .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
                 .isActive(request.getIsActive())
                 .severity(request.getSeverity())
                 .thresholdSign(request.getThresholdSign())

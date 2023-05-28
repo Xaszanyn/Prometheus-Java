@@ -19,7 +19,7 @@ public class HistoryMapper {
                         .thresholdSign(dto.getThresholdSign())
                         .thresholdValue(dto.getThresholdValue())
                         .alertValue(dto.getAlertValue())
-                        .alertTime(dto.getAlertTime())
+                        .alertTime(DateTimeMapper.map(dto.getAlertTime()))
                         .build();
                 outputList.add(serviceOutput);
             }

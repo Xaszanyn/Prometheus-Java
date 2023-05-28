@@ -12,8 +12,8 @@ public class AlertServiceOutput {
     private String name;
     private String query;
     private Long insertUserId;
-    private Long insertTime;
-    private Long updateTime;
+    private String insertTime;
+    private String updateTime;
     private Boolean isActive;
     private String severity;
     private String thresholdSign;

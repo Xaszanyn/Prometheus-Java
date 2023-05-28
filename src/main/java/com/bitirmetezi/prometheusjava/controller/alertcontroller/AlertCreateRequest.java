@@ -9,8 +9,6 @@ public class AlertCreateRequest {
     private String name;
     private String query;
     private Long insertUserId;
-    private Long insertTime;
-    private Long updateTime;
     private Boolean isActive;
     private String severity;
     private String thresholdSign;
