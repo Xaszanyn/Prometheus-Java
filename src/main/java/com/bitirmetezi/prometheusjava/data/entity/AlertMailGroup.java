@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "alert_mail_group")
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class AlertMailGroup implements Serializable {
 

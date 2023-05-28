@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface HistoryService {
     List<HistoryServiceOutput> findAll();
-    HistoryServiceOutput findByAlertId(Long id);
+    List<HistoryServiceOutput> findByAlertId(Long id);
     String saveHistory(HistoryCreateServiceInput serviceInput);
 }

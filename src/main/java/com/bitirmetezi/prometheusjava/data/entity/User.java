@@ -6,7 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "\"USER\"")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,17 +14,17 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "\"ID\"")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "\"NAME\"")
+    @Column(name = "NAME")
     private String name;
-    @Column(name = "\"EMAIL\"")
+    @Column(name = "EMAIL")
     private String email;
-    @Column(name = "\"PASSWORD\"")
+    @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "\"ORGANISATION\"")
+    @Column(name = "ORGANISATION")
     private String organisation;
-    @Column(name = "\"IS_ADMIN\"")
+    @Column(name = "IS_ADMIN")
     private Boolean isAdmin;
 }
