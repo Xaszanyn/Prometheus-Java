@@ -5,8 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class UserServiceOutput{
-    private Long id;
+public class UserCreateServiceInput {
     private String name;
     private String email;
     private String password;

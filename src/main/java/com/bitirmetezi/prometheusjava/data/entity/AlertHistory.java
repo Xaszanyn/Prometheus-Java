@@ -6,24 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
-@Table(name = "alert_history")
+@Table(name = "ALERT_HISTORY")
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class AlertHistory implements Serializable {
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "alert_value")
+    @Column(name = "ALERT_VALUE")
     @NonNull
     private Double alertValue;
-    @Column(name = "alert_time")
+    @Column(name = "ALERT_TIME")
     @NonNull
-    private BigDecimal alertTime;
+    private Long alertTime;
     @ManyToOne
-    @JoinColumn(name = "alert_id")
+    @JoinColumn(name = "ALERT_ID")
     private Alert alert;
 }

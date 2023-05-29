@@ -1,34 +1,30 @@
 package com.bitirmetezi.prometheusjava.data.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
-    @NonNull
+    @Column(name = "NAME")
     private String name;
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
-    @Column(name = "password")
-    @NonNull
+    @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "organisation")
+    @Column(name = "ORGANISATION")
     private String organisation;
-    @Column(name = "is_admin")
-    @NonNull
+    @Column(name = "IS_ADMIN")
     private Boolean isAdmin;
 }

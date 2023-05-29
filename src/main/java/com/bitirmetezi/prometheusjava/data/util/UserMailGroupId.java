@@ -10,9 +10,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Embeddable
+@Builder
+@AllArgsConstructor
 public class UserMailGroupId implements Serializable {
-    @Column(name = "user_id")
+    @Column(name = "USER_ID")
     private Long userId;
-    @Column(name = "mail_list_id")
+    @Column(name = "MAIL_LIST_ID")
     private Long mailListId;
 }

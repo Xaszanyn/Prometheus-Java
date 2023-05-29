@@ -2,9 +2,7 @@ package com.bitirmetezi.prometheusjava.data.util;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -12,9 +10,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Embeddable
+@AllArgsConstructor
+@Builder
 public class AlertMailGroupId implements Serializable {
-    @Column(name = "alert_id")
+    @Column(name = "ALERT_ID")
     private Long alertId;
-    @Column(name = "mail_list_id")
+    @Column(name = "MAIL_LIST_ID")
     private Long mailListId;
 }
