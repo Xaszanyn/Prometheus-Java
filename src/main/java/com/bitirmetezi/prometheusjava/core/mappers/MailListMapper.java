@@ -1,8 +1,10 @@
 package com.bitirmetezi.prometheusjava.core.mappers;
 
+import com.bitirmetezi.prometheusjava.controller.maillistcontroller.AddUserToMailListRequest;
 import com.bitirmetezi.prometheusjava.controller.maillistcontroller.MailListCreateRequest;
 import com.bitirmetezi.prometheusjava.controller.maillistcontroller.MailListUpdateRequest;
 import com.bitirmetezi.prometheusjava.data.entity.MailList;
+import com.bitirmetezi.prometheusjava.service.maillistservice.AddUserToMailListServiceInput;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListCreateServiceInput;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListServiceOutput;
 import com.bitirmetezi.prometheusjava.service.maillistservice.MailListUpdateServiceInput;
@@ -83,6 +85,14 @@ public class MailListMapper {
                 .name(request.getName())
                 .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
                 .lastUpdateUserId(request.getLastUpdateUserId())
+                .build();
+    }
+
+    public static AddUserToMailListServiceInput map(AddUserToMailListRequest request){
+        return AddUserToMailListServiceInput.builder()
+                .userId(request.getUserId())
+                .insertUserId(request.getInsertUserId())
+                .MailListId(request.getMailListId())
                 .build();
     }
 }

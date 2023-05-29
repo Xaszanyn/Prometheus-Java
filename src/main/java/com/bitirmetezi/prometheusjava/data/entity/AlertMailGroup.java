@@ -2,37 +2,33 @@ package com.bitirmetezi.prometheusjava.data.entity;
 
 import com.bitirmetezi.prometheusjava.data.util.AlertMailGroupId;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
-@Table(name = "alert_mail_group")
+@Table(name = "ALERT_MAIL_GROUP")
 @Data
 @NoArgsConstructor(force = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AlertMailGroup implements Serializable {
 
     @EmbeddedId
     private AlertMailGroupId id;
-    @Column(name = "insert_time")
+    @Column(name = "INSERT_TIME")
     @NonNull
-    private BigDecimal insertTime;
-    @Column(name = "update_time")
+    private Long insertTime;
+    @Column(name = "UPDATE_TIME")
     @NonNull
-    private BigDecimal updateTime;
-    @Column(name = "insert_user_id")
+    private Long updateTime;
+    @Column(name = "INSERT_USER_ID")
     @NonNull
     private Long insertUserId;
 
     @ManyToOne
-    @JoinColumn(name = "alert_id", insertable = false, updatable = false)
+    @JoinColumn(name = "ALERT_ID", insertable = false, updatable = false)
     private Alert alert;
     @ManyToOne
-    @JoinColumn(name = "mail_list_id", insertable = false, updatable = false)
+    @JoinColumn(name = "MAIL_LIST_ID", insertable = false, updatable = false)
     private MailList mailList;
 }

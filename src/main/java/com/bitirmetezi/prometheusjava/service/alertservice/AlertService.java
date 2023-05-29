@@ -8,4 +8,7 @@ public interface AlertService {
     String saveAlert(AlertCreateServiceInput input);
     String updateAlert(AlertUpdateServiceInput input);
     String deleteAlert(Long id);
+    String addAlertToMailList(AddAlertToMailListServiceInput input);
+
+    String deleteAlertFromMailList(Long alertId, Long mailListId);
 }

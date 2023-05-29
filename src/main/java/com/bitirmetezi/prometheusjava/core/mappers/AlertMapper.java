@@ -1,8 +1,10 @@
 package com.bitirmetezi.prometheusjava.core.mappers;
 
+import com.bitirmetezi.prometheusjava.controller.alertcontroller.AddAlertToMailListRequest;
 import com.bitirmetezi.prometheusjava.controller.alertcontroller.AlertCreateRequest;
 import com.bitirmetezi.prometheusjava.controller.alertcontroller.AlertUpdateRequest;
 import com.bitirmetezi.prometheusjava.data.entity.Alert;
+import com.bitirmetezi.prometheusjava.service.alertservice.AddAlertToMailListServiceInput;
 import com.bitirmetezi.prometheusjava.service.alertservice.AlertCreateServiceInput;
 import com.bitirmetezi.prometheusjava.service.alertservice.AlertServiceOutput;
 import com.bitirmetezi.prometheusjava.service.alertservice.AlertUpdateServiceInput;
@@ -131,6 +133,14 @@ public class AlertMapper {
                 .timeValue(request.getTimeValue())
                 .startActiveTime(request.getStartActiveTime())
                 .endActiveTime(request.getEndActiveTime())
+                .build();
+    }
+
+    public static AddAlertToMailListServiceInput map(AddAlertToMailListRequest request){
+        return AddAlertToMailListServiceInput.builder()
+                .alertId(request.getAlertId())
+                .mailListId(request.getMailListId())
+                .insertUserId(request.getInsertUserId())
                 .build();
     }
 }

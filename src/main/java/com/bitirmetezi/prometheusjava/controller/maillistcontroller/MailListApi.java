@@ -66,6 +66,24 @@ public class MailListApi {
         return response;
     }
 
+    @PostMapping("/addUserToMailList")
+    public BaseResponse<String> addUserToMailList(@RequestBody AddUserToMailListRequest request){
+        String result = mailListService.addUserToMailList(map(request));
+
+        BaseResponse<String> response = new BaseResponse<>();
+        fillResponse(result, response);
+        return response;
+    }
+
+    @DeleteMapping("deleteUserFromMailList/{mailListId}/{userId}")
+    public BaseResponse<String> deleteUserFromMailList(@PathVariable("mailListId") Long mailListId, @PathVariable("userId") Long userId){
+        String result = mailListService.deleteUserFromMailList(mailListId, userId);
+
+        BaseResponse<String> response = new BaseResponse<>();
+        fillResponse(result, response);
+        return response;
+    }
+
     private static void fillResponse(MailListServiceOutput serviceOutput, BaseResponse<MailListServiceOutput> response) {
         if(serviceOutput != null){
             response.setResponseCode(1);

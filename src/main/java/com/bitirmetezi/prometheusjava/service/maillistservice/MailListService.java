@@ -8,4 +8,6 @@ public interface MailListService {
     String createMailList(MailListCreateServiceInput serviceInput);
     String updateMailList(MailListUpdateServiceInput serviceInput);
     String deleteMailList(Long id);
+    String addUserToMailList(AddUserToMailListServiceInput serviceInput);
+    String deleteUserFromMailList(Long mailListId, Long userId);
 }

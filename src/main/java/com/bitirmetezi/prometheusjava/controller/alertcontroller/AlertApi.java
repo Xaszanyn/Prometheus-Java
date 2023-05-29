@@ -68,6 +68,24 @@ public class AlertApi {
         return response;
     }
 
+    @PostMapping("/addAlertToMailList")
+    public BaseResponse<String> addAlertToMailList(@RequestBody AddAlertToMailListRequest request){
+        String output = alertService.addAlertToMailList(map(request));
+
+        BaseResponse<String> response = new BaseResponse<>();
+        fillResponse(output, response);
+        return response;
+    }
+
+    @DeleteMapping("/deleteAlertFromMailList/{alertId}/{mailListId}")
+    public BaseResponse<String> deleteAlertFromMailList(@PathVariable("alertId") Long alertId, @PathVariable("mailListId") Long mailListId){
+        String output = alertService.deleteAlertFromMailList(alertId, mailListId);
+
+        BaseResponse<String> response = new BaseResponse<>();
+        fillResponse(output, response);
+        return response;
+    }
+
 
     private static void fillResponse(AlertServiceOutput serviceOutput, BaseResponse<AlertServiceOutput> response) {
         if(serviceOutput != null){
