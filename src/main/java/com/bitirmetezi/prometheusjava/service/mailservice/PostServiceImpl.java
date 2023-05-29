@@ -14,7 +14,7 @@ public class PostServiceImpl implements PostService{
     @Override
     public void sendEmailOnAlert(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("acokmez3@gmail.com");
+        message.setFrom("pmalertmanager@gmail.com");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
