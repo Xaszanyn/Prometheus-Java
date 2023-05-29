@@ -45,6 +45,10 @@ public class AlertServiceImp implements AlertService{
     @Override
     public String updateAlert(AlertUpdateServiceInput input) {
         if (alertRepository.existsById(input.getId())){
+            Alert alert = alertRepository.findById(input.getId()).get();
+            Alert newAlert = map(input);
+            newAlert.setInsertUserId(alert.getInsertUserId());
+            newAlert.setInsertTime(alert.getInsertTime());
             alertRepository.save(map(input));
             return "success";
         }

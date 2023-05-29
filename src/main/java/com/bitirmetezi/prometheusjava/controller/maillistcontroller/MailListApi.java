@@ -48,7 +48,7 @@ public class MailListApi {
         return response;
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public BaseResponse<String> updateMailList(@RequestBody MailListUpdateRequest request){
         String result = mailListService.updateMailList(map(request));
 
@@ -57,7 +57,7 @@ public class MailListApi {
         return response;
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public BaseResponse<String> deleteMailList(@PathVariable("id") Long id){
         String result = mailListService.deleteMailList(id);
 

@@ -9,7 +9,6 @@ public class AlertUpdateRequest {
     private Long id;
     private String name;
     private String query;
-    private Long insertUserId;
     private Boolean isActive;
     private String severity;
     private String thresholdSign;

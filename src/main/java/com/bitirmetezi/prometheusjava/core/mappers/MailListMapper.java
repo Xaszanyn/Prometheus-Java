@@ -60,9 +60,9 @@ public class MailListMapper {
         return MailList.builder()
                 .id(serviceInput.getId())
                 .name(serviceInput.getName())
-                .insertTime(serviceInput.getInsertTime())
+                .insertTime(serviceInput.getUpdateTime())
                 .updateTime(serviceInput.getUpdateTime())
-                .insertUserId(serviceInput.getInsertUserId())
+                .insertUserId(serviceInput.getLastUpdateUserId())
                 .lastUpdateUserId(serviceInput.getLastUpdateUserId())
                 .build();
     }
@@ -82,7 +82,6 @@ public class MailListMapper {
                 .id(request.getId())
                 .name(request.getName())
                 .updateTime(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(3)))
-                .insertUserId(request.getInsertUserId())
                 .lastUpdateUserId(request.getLastUpdateUserId())
                 .build();
     }

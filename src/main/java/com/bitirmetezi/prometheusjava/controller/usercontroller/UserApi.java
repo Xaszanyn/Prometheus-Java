@@ -49,7 +49,7 @@ public class UserApi {
         return response;
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public BaseResponse<String> updateUser(@RequestBody UserUpdateRequest request){
         String result = userService.updateUser(UserMapper.map(request));
 
@@ -58,7 +58,7 @@ public class UserApi {
         return response;
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public BaseResponse<String> deleteUser(@PathVariable("id") Long id){
         String result = userService.deleteUser(id);
 
