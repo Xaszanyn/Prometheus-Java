@@ -11,4 +11,6 @@ public interface UserMailGroupRepository extends JpaRepository<UserMailGroup, Us
 
     @Query(value = "Select u From UserMailGroup u Where u.mailList =:mailListId")
     List<UserMailGroup> findByMailListId(Long mailListId);
+
+
 }

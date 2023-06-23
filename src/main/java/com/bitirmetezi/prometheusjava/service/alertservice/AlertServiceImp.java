@@ -107,4 +107,13 @@ public class AlertServiceImp implements AlertService{
         }
         return "not found";
     }
+
+    @Override
+    public List<AlertServiceOutput> findAllActiveAlerts() {
+        List<Alert> alertServiceOutputs = alertRepository.findAllActiveAlerts();
+        if (!CollectionUtils.isEmpty(alertServiceOutputs))
+            return map(alertServiceOutputs);
+        log.error( "There is no active alert.");
+        return new ArrayList<>();
+    }
 }

@@ -12,12 +12,12 @@ public class PostServiceImpl implements PostService{
     private JavaMailSender mailSender;
 
     @Override
-    public void sendEmailOnAlert(String to, String subject, String body) {
+    public void sendEmailOnAlert(MailServiceInput serviceInput) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("pmalertmanager@gmail.com");
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
+        message.setTo(serviceInput.getTo());
+        message.setSubject(serviceInput.getSubject());
+        message.setText(serviceInput.getBody());
 
         mailSender.send(message);
     }
